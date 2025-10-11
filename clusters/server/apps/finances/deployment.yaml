@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finances
+  namespace: finances
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: finances } }
+  template:
+    metadata: { labels: { app: finances } }
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/tyreesamurai/finance-management:latest
+          ports: [{ containerPort: 80 }]
+          resources:
+            requests: { cpu: 50m, memory: 128Mi }
+            limits: { cpu: 500m, memory: 256Mi }
