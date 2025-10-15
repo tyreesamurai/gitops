@@ -1,7 +1,7 @@
 global:
   postgresql:
     auth:
-      postgressPassword: "" # TODO: Come back here to change this to a SOPS Secret
+      postgresPassword: "" # TODO: Come back here to change this to a SOPS Secret
 
 primary:
   persistence:

@@ -1,21 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: finances
-  namespace: finances
+  name: shithead
+  namespace: shithead
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    # nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
-  - host: home-server
-    http:
+    - host: home-server
+      http:
         paths:
-          - path: /finances(/|$)(.*)
+          - path: /shithead(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: finances
+                name: shithead
                 port:
                   number: 80

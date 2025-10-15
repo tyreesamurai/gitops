@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shithead-api
+  namespace: shithead
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: shithead-api }
+  template:
+    metadata:
+      labels: { app: shithead-api }
+    spec:
+      containers:
+        - name: api
+          image: gcr.io/google-samples/hello-app:2.0
+          ports: [{ containerPort: 8080 }]
+          env:
+            - name: PORT
+              value: "8080"

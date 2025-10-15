@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipes
+  namespace: recipes
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: recipes }
+  template:
+    metadata:
+      labels: { app: recipes }
+    spec:
+      containers:
+        - name: web
+          image: nginxdemos/hello:plain-text
+          ports: [{ containerPort: 80 }]
+          resources:
+            requests: { cpu: 50m, memory: 128Mi }
+            limits: { cpu: 500m, memory: 256Mi }

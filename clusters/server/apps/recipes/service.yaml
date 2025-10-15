@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: finances
-  namespace: finances
+  name: recipes
+  namespace: recipes
 spec:
-  selector: { app: finances }
+  selector: { app: recipes }
   ports:
     - port: 80
       targetPort: 80
