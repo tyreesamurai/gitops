@@ -10,11 +10,11 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: home-server
+    - host: recipes.home
       http:
         paths:
-          - path: /recipes(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: recipes

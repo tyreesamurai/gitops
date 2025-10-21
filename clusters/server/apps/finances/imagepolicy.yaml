@@ -1,0 +1,13 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: finances-policy
+  namespace: finances
+spec:
+  imageRepositoryRef:
+    name: finances-repo
+  filterTags:
+    pattern: '^latest$'
+  policy:
+    alphabetical:
+      order: asc

@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: home-server
+    - host: server
       http:
         paths:
           - path: /shithead(/|$)(.*)

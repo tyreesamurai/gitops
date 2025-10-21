@@ -1,0 +1,9 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: finances-repo
+  namespace: finances
+spec:
+  image: ghcr.io/tyreesamurai/finances
+  interval: 1m
+

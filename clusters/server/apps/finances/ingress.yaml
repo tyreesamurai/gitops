@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: home-server
+  - host: finances.home
     http:
         paths:
           - path: /finances(/|$)(.*)
