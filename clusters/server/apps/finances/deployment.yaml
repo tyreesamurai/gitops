@@ -12,6 +12,7 @@ spec:
       containers:
         - name: web
           image: ghcr.io/tyreesamurai/finances:latest
+          imagePullPolicy: Always
           ports: [{ containerPort: 80 }]
           resources:
             requests: { cpu: 50m, memory: 128Mi }
