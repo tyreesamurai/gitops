@@ -33,7 +33,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: placeholder
+                name: todos
                 port:
                   number: 80
     - host: assistant.juntos.casa
