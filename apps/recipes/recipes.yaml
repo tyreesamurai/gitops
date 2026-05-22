@@ -18,7 +18,7 @@ spec:
           image: ghcr.io/tyreesamurai/recipes:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8001
+            - containerPort: 3000
           envFrom:
             - secretRef:
                 name: recipes-env
@@ -33,4 +33,4 @@ spec:
     app: recipes
   ports:
     - port: 80
-      targetPort: 8001
+      targetPort: 3000
