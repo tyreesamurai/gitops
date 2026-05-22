@@ -1,0 +1,5 @@
+apiVersion: kust
+kind: Kustomization
+resources:
+  - todos.yaml
+  - sealed-secret.yaml
