@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipes
+  namespace: juntos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipes
+  template:
+    metadata:
+      labels:
+        app: recipes
+    spec:
+      containers:
+        - name: recipes
+          image: ghcr.io/tyreesamurai/recipes:latest
+          ports:
+            - containerPort: 8001
+          envFrom:
+            - secretRef:
+                name: recipes-env
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recipes
+  namespace: juntos
+spec:
+  selector:
+    app: recipes
+  ports:
+    - port: 80
+      targetPort: 8001
