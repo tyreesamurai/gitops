@@ -8,23 +8,23 @@ spec:
   selector:
     matchLabels:
       app: cloudflared
-    template:
-      metadata:
-        labels:
-          app: cloudflared
-      spec:
-        containers:
-          - name: cloudflared
-            image: cloudflare/cloudflared:latest
-            args:
-              - tunnel
-              - --no-autoupdate
-              - run
-              - --token
-              - $(TUNNEL_TOKEN)
-            env:
-              - name: TUNNEL_TOKEN
-                valueFrom:
-                  secretKeyRef:
-                    name: cloudflared-token
-                    key: TUNNEL_TOKEN
+  template:
+    metadata:
+      labels:
+        app: cloudflared
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          args:
+            - tunnel
+            - --no-autoupdate
+            - run
+            - --token
+            - $(TUNNEL_TOKEN)
+          env:
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflared-token
+                  key: TUNNEL_TOKEN
