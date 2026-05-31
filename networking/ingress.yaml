@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: juntos-ingress
   namespace: juntos
+spec:
   ingressClassName: traefik
   rules:
     - host: recipes.juntos.casa
