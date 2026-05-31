@@ -4,13 +4,6 @@ metadata:
   name: juntos-ingress
   namespace: juntos
   ingressClassName: traefik
-  tls:
-    - hosts:
-        - recipes.juntos.casa
-        - todos.juntos.casa
-        - assistant.juntos.casa
-        - finances.juntos.casa
-        - shithead.juntos.casa
   rules:
     - host: recipes.juntos.casa
       http:
