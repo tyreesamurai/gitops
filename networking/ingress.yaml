@@ -4,8 +4,6 @@ metadata:
   name: juntos-ingress
   namespace: juntos
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
   ingressClassName: traefik
   tls:
     - hosts:
@@ -14,7 +12,6 @@ spec:
         - assistant.juntos.casa
         - finances.juntos.casa
         - shithead.juntos.casa
-      secretName: juntos-tls
   rules:
     - host: recipes.juntos.casa
       http:
