@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: dev-external
-  namespace: networking
+  namespace: juntos
 spec:
   ports:
     - port: 80
@@ -12,7 +12,7 @@ apiVersion: v1
 kind: Endpoints
 metadata:
   name: dev-external
-  namespace: networking
+  namespace: juntos
 subsets:
   - addresses:
       - ip: 10.0.0.15
