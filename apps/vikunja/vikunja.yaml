@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: tools
+  name: juntos
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: vikunja-files-pvc
-  namespace: tools
+  namespace: juntos
 spec:
   accessModes:
     - ReadWriteOnce
@@ -19,7 +19,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vikunja
-  namespace: tools
+  namespace: juntos
 spec:
   replicas: 1
   selector:
@@ -73,29 +73,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: vikunja
-  namespace: tools
+  namespace: juntos
 spec:
   selector:
     app: vikunja
   ports:
     - port: 80
       targetPort: 3456
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: vikunja
-  namespace: tools
-spec:
-  ingressClassName: traefik
-  rules:
-    - host: todos.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: vikunja
-                port:
-                  number: 80
