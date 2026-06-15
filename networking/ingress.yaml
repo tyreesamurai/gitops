@@ -16,16 +16,16 @@ spec:
                 name: recipes
                 port:
                   number: 80
-    - host: todos.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: vikunja
-                port:
-                  number: 80
+    # - host: todos.juntos.casa
+    #   http:
+    #     paths:
+    #       - path: /
+    #         pathType: Prefix
+    #         backend:
+    #           service:
+    #             name: vikunja
+    #             port:
+    #               number: 80
     - host: assistant.juntos.casa
       http:
         paths:
