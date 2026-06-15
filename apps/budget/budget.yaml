@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: budget
+  namespace: tools
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: budget
+  template:
+    metadata:
+      labels:
+        app: budget
+    spec:
+      containers:
+        - name: budget
+          image: actualbudget/actual-server:25.6.1
+          env:
+            - name: ACTUAL_UPLOAD_FILE_SYNC_SIZE_LIMIT_MB
+              value: "20"
+          ports:
+            - containerPort: 5006
+          volumeMounts:
+            - name: budget-data
+              mountPath: /data
+      volumes:
+        - name: budget-data
+          persistentVolumeClaim:
+            claimName: budget-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: budget-pvc
+  namespace: tools
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: budget
+  namespace: tools
+spec:
+  selector:
+    app: budget
+  ports:
+    - port: 80
+      targetPort: 5006

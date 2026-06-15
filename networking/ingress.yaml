@@ -85,3 +85,13 @@ spec:
                 name: vikunja
                 port:
                   number: 80
+    - host: budget.juntos.casa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: budget
+                port:
+                  number: 80
