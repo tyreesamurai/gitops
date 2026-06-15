@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finances
+  namespace: juntos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finances
+  template:
+    metadata:
+      labels:
+        app: finances
+    spec:
+      containers:
+        - name: finances
+          image: ghcr.io/tyreesamurai/finances:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - secretRef:
+                name: finances-env
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finances
+  namespace: juntos
+spec:
+  selector:
+    app: finances
+  ports:
+    - port: 80
+      targetPort: 3000
