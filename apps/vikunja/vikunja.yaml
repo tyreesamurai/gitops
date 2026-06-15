@@ -55,7 +55,7 @@ spec:
             - name: VIKUNJA_SERVICE_FRONTENDURL
               value: "https://todos.juntos.casa"
             - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
-              value: "false" # 👈 this is what locks it to just your accounts
+              value: "true" # 👈 this is what locks it to just your accounts
           ports:
             - containerPort: 3456
           volumeMounts:
