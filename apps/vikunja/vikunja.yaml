@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: juntos
+  name: tools
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: vikunja-files-pvc
-  namespace: juntos
+  namespace: tools
 spec:
   accessModes:
     - ReadWriteOnce
@@ -19,7 +19,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vikunja
-  namespace: juntos
+  namespace: tools
 spec:
   replicas: 1
   selector:
@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: vikunja
-          image: vikunja/vikunja:0.24.4 # pin a version, don't use latest
+          image: vikunja/vikunja:latest
           env:
             - name: VIKUNJA_DATABASE_TYPE
               value: "postgres"
@@ -73,7 +73,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: vikunja
-  namespace: juntos
+  namespace: tools
 spec:
   selector:
     app: vikunja
