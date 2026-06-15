@@ -50,6 +50,8 @@ spec:
                 secretKeyRef:
                   name: vikunja-secrets
                   key: jwt-secret
+            - name: VIKUNJA_SERVICE_PUBLICURL
+              value: "https://todos.juntos.casa"
             - name: VIKUNJA_SERVICE_FRONTENDURL
               value: "https://todos.juntos.casa"
             - name: VIKUNJA_SERVICE_ENABLEREGISTRATION
