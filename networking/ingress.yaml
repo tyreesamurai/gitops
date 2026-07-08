@@ -1,75 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: juntos-ingress
-  namespace: juntos
-spec:
-  ingressClassName: traefik
-  rules:
-    - host: recipes.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: recipes
-                port:
-                  number: 80
-    # - host: todos.juntos.casa
-    #   http:
-    #     paths:
-    #       - path: /
-    #         pathType: Prefix
-    #         backend:
-    #           service:
-    #             name: vikunja
-    #             port:
-    #               number: 80
-    - host: assistant.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: homeassistant
-                port:
-                  number: 80
-    - host: finances.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: placeholder
-                port:
-                  number: 80
-    - host: shithead.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: placeholder
-                port:
-                  number: 80
-    - host: dev.juntos.casa
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: dev-external
-                port:
-                  number: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: tools-ingress
   namespace: tools
 spec:
@@ -93,5 +24,43 @@ spec:
             backend:
               service:
                 name: budget
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: recipes-ingress
+  namespace: recipes
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: recipes.juntos.casa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: recipes
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: assistant-ingress
+  namespace: assistant
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: assistant.juntos.casa
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: homeassistant
                 port:
                   number: 80
